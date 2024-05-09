@@ -5,6 +5,13 @@ const Form = () => {
     const pStyles = 'flex flex-col text-left gap-2';
     const inputStyles = 'rounded-md border-solid border-2 border-slate-600 p-1 focus:bg-gray-300';
 
+    const playSound = () => {
+        const sound = new Audio(popSound);
+        sound.volume = 0.5;
+
+        sound.play();
+    }
+
     const calculateBMI = (event) => {
         // prevent form submission
         event.preventDefault();
@@ -24,7 +31,7 @@ const Form = () => {
             const bmi = (weight / (height **2) * 703).toFixed(2);
 
             // play sound and insert span to display BMI
-            new Audio(popSound).play();
+            playSound();
             results.innerHTML = `<span> Your BMI is ${bmi}%`;
         }
     }
