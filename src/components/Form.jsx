@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import popSound from '../assets/sounds/pop.mp3'
 
 const Form = () => {
+    const [isMetric, setMetric] = useState(false);
+
     const pStyles = 'flex flex-col text-left gap-2';
     const inputStyles = 'rounded-md border-solid border-2 border-slate-600 p-1 focus:bg-gray-300';
+
+    const switchMeasurementStyle = (event, current) => {
+        // prevent form submission
+        event.preventDefault();
+
+        // switch between measurements
+        setMetric(!current);
+    }
 
     const playSound = () => {
         const sound = new Audio(popSound);
@@ -28,7 +38,7 @@ const Form = () => {
             results.textContent = 'Please provide a valid weight!';
         }else{
             // calculate BMI
-            const bmi = (weight / (height **2) * 703).toFixed(2);
+            const bmi = isMetric ? (weight / ((height / 100) **2)).toFixed(2) : (weight / (height **2) * 703).toFixed(2);
 
             // play sound and insert span to display BMI
             playSound();
@@ -39,18 +49,19 @@ const Form = () => {
   return (
     <form className='flex flex-col gap-4 text-lg'>
         <p className={pStyles}>
-            <label>Height (inches): </label>
+            <label>Height ({isMetric ? 'cm' : 'inches'}): </label>
             <input type="number" placeholder='Enter your height...' className={inputStyles} id='height'/>
         </p>
 
         <p className={pStyles}>
-            <label>Weight (lbs): </label>
+            <label>Weight ({isMetric ? 'kg' : 'lbs'}): </label>
             <input type="number" placeholder='Enter your weight...' className={inputStyles} id='weight'/>
         </p>
 
-        <button className='rounded-lg bg-green-700 text-white text-lg border-solid border-2 border-zinc-600 p-1 mt-3 mb-3 cursor-pointer' onClick={(event) => calculateBMI(event)}>Calculate BMI</button>
-
         <div className='results' id='results'></div>
+
+        <button className='rounded-lg bg-green-700 text-white text-lg border-solid border-2 border-zinc-600 p-1 mt-3 mb-1 cursor-pointer' onClick={(event) => calculateBMI(event)}>Calculate BMI</button>
+        <button className='rounded-lg bg-slate-600 text-white text-lg border-solid border-2 border-zinc-600 p-0.5 mt-1.5 mb-3 cursor-pointer' onClick={(event) => switchMeasurementStyle(event, isMetric)}>Switch Measurement</button>
     </form>
   )
 }
