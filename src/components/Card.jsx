@@ -1,6 +1,7 @@
 import React from 'react'
 import Form from './Form'
 import Guide from './Guide'
+import Footer from './Footer'
 
 const Card = () => {
   return (
@@ -8,6 +9,7 @@ const Card = () => {
         <h1 className='text-4xl text-white bg-slate-600 border-2 border-zinc-700 rounded-lg px-12 py-2 mb-5'>BMI Calculator</h1>
         <Form />
         <Guide />
+        <Footer />
     </div>
   )
 }
