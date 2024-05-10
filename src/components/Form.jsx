@@ -22,6 +22,16 @@ const Form = () => {
         sound.play();
     }
 
+    const reset = () => {
+        const results = document.querySelector('#results');
+        const height = document.querySelector('#height');
+        const weight = document.querySelector('#weight');
+
+        results.innerHTML = '';
+        height.value = '';
+        weight.value = '';
+    }
+
     const calculateBMI = (event) => {
         // prevent form submission
         event.preventDefault();
@@ -52,6 +62,11 @@ const Form = () => {
             // play sound and insert span to display BMI
             playSound();
             results.innerHTML = `<span> Your BMI is ${bmi}%`;
+
+            // clear the fields after 8 seconds
+            setTimeout(() => {
+                reset();
+            }, 8000);
         }
     }
 
