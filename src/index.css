@@ -19,7 +19,12 @@ body{
   background: linear-gradient(to right,#f4ac58,#f96a8a);
 }
 
+.results {
+  color: red;
+}
+
 .results span{
+  color: black;
   font-weight: 700;
   font-size: 1.5rem;
 }

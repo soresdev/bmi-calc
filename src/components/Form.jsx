@@ -34,8 +34,17 @@ const Form = () => {
         // check if the fields are filled out corretly
         if(!height || height <= 0 || isNaN(height)){
             results.textContent = 'Please provide a valid height!';
+
+            // remove the warning after 3 seconds
+            setTimeout(() => {
+                results.textContent = '';
+            }, 3000)
         } else if(!weight || weight <= 0 || isNaN(weight)){
             results.textContent = 'Please provide a valid weight!';
+
+            setTimeout(() => {
+                results.textContent = '';
+            }, 3000)
         }else{
             // calculate BMI
             const bmi = isMetric ? (weight / ((height / 100) **2)).toFixed(2) : (weight / (height **2) * 703).toFixed(2);
