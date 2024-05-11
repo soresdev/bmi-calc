@@ -84,8 +84,8 @@ const Form = () => {
 
         <div className='results' id='results'></div>
 
-        <button className='rounded-lg bg-green-700 text-white text-lg border-solid border-2 border-zinc-600 p-1 mt-3 mb-1 cursor-pointer' onClick={(event) => calculateBMI(event)}>Calculate BMI</button>
-        <button className='rounded-lg bg-slate-600 text-white text-lg border-solid border-2 border-zinc-600 p-0.5 mt-1.5 mb-3 cursor-pointer' onClick={(event) => switchMeasurementStyle(event, isMetric)}>Switch Measurement</button>
+        <button className='rounded-lg bg-green-700 text-white text-lg border-solid border-2 border-zinc-600 p-1 mt-3 mb-1 cursor-pointer ease-in-out duration-300 hover:bg-green-600' onClick={(event) => calculateBMI(event)}>Calculate BMI</button>
+        <button className='rounded-lg bg-slate-600 text-white text-lg border-solid border-2 border-zinc-600 p-0.5 mt-1.5 mb-3 cursor-pointer ease-in-out duration-300 hover:bg-slate-500' onClick={(event) => switchMeasurementStyle(event, isMetric)}>Switch Measurement</button>
     </form>
   )
 }
