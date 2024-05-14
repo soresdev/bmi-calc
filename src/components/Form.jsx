@@ -3,6 +3,7 @@ import popSound from '../assets/sounds/pop.mp3'
 
 const Form = () => {
     const [isMetric, setMetric] = useState(false);
+    const [isLocked, setLocked] = useState(false);
 
     const pStyles = 'flex flex-col text-left gap-2';
     const inputStyles = 'rounded-md border-solid border-2 border-slate-600 p-1 focus:bg-gray-300';
@@ -30,11 +31,16 @@ const Form = () => {
         results.innerHTML = '';
         height.value = '';
         weight.value = '';
+
+        setLocked(false);
     }
 
     const calculateBMI = (event) => {
         // prevent form submission
         event.preventDefault();
+
+        // prevent spam submissions
+        if(isLocked) return;
 
         // get results div & the height/weight inputs
         const results = document.querySelector('#results');
@@ -62,6 +68,8 @@ const Form = () => {
             // play sound and insert span to display BMI
             playSound();
             results.innerHTML = `<span> Your BMI is ${bmi}%`;
+
+            setLocked(true);
 
             // clear the fields after 8 seconds
             setTimeout(() => {
