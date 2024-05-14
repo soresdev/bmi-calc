@@ -12,6 +12,8 @@ const Form = () => {
         // prevent form submission
         event.preventDefault();
 
+        if(isLocked) return;
+
         // switch between measurements
         setMetric(!current);
     }
