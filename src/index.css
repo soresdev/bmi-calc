@@ -28,18 +28,3 @@ body{
   font-weight: 700;
   font-size: 1.5rem;
 }
-
-#guide-p1 span{
-  color: orange;
-  font-weight: 600;
-}
-
-#guide-p2 span{
-  color: green;
-  font-weight: 600;
-}
-
-#guide-p3 span{
-  color: red;
-  font-weight: 600;
-}
