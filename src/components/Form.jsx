@@ -5,8 +5,10 @@ const Form = () => {
     const [isMetric, setMetric] = useState(false);
     const [isLocked, setLocked] = useState(false);
 
-    const pStyles = 'flex flex-col text-left gap-2';
-    const inputStyles = 'rounded-md border-solid border-2 border-slate-600 p-1 focus:bg-gray-300';
+    const styles = {
+        p: `flex flex-col text-left gap-2`,
+        input: `rounded-md border-solid border-2 border-slate-600 p-1 focus:bg-gray-300`
+    }
 
     const switchMeasurementStyle = (event, current) => {
         // prevent form submission
@@ -82,14 +84,14 @@ const Form = () => {
 
   return (
     <form className='flex flex-col gap-4 text-lg'>
-        <p className={pStyles}>
+        <p className={styles.p}>
             <label>Height ({isMetric ? 'cm' : 'inches'}): </label>
-            <input type="number" placeholder='Enter your height...' className={inputStyles} id='height'/>
+            <input type="number" placeholder='Enter your height...' className={styles.input} id='height'/>
         </p>
 
-        <p className={pStyles}>
+        <p className={styles.p}>
             <label>Weight ({isMetric ? 'kg' : 'lbs'}): </label>
-            <input type="number" placeholder='Enter your weight...' className={inputStyles} id='weight'/>
+            <input type="number" placeholder='Enter your weight...' className={styles.input} id='weight'/>
         </p>
 
         <div className='results' id='results'></div>
